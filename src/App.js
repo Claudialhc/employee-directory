@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+    <div className="jumbotron jumbotron-fluid">
+      <div className="container">
+        <h1 className="display-4 text-center mt-3">Employee Directory</h1>
+        <p className="lead text-center mt-3">
+          Click on carrots to filter by heading or use the search box to narrow your results.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
     </div>
+    //Jumbotron ends here
+    
+
+    //Search form ends here
+
+    //columns end here
+    
   );
 }
 
