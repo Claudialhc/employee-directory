@@ -7,6 +7,7 @@ function App() {
       <div className="container">
         <h1 className="display-4 text-center mt-3">Employee Directory</h1>
         <p className="lead text-center mt-3">
+          <hr />
           Click on carrots to filter by heading or use the search box to narrow your results.
         </p>
       </div>
