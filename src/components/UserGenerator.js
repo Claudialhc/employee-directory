@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-// import Container from "./Container";
-// import Row from "./Row";
-// import Col from "./Col";
-// import Card from "./Card";
 import SearchForm from "./SearchForm";
 import EmployeeDetail from "./EmployeeDetail";
-import API from "./API";
+import API from "../API";
 
 class UserGenerator extends Component {
   state = {
@@ -14,12 +10,15 @@ class UserGenerator extends Component {
   };
 
   componentDidMount() {
-    this.searchEmployee("");
+    this.searchEmployee();
   }
 
-  searchEmployee = (query) => {
-    API.search(query)
-      .then((res) => this.setState({ result: res.data }))
+  searchEmployee = () => {
+      API.userGenerator()
+      .then((res) => {
+          this.setState({ result: res.data })
+          console.log(res.data)
+        })
       .catch((err) => console.log(err));
   };
 
@@ -49,26 +48,7 @@ class UserGenerator extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col size="md-8">
-            <Card
-              heading={this.state.result.Name || "Search for an Employee"}
-            >
-              {this.renderEmployeeSearchResult()}
-            </Card>
-          </Col>
-          <Col size="md-4">
-            <Card heading="Search">
-              <SearchForm
-                value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      ""
     );
   }
 }

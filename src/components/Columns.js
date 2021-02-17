@@ -2,23 +2,23 @@ import React from "react";
 
 function Columns(props) {
     return (
-        <div class="row">
-        <div class="col">
+        <div className="row">
+        <div className="col">
         Image
         </div>
-        <div class="col">
+        <div className="col">
         Name
         </div>
-        <div class="col">
+        <div className="col">
         Phone
         </div>
-        <div class="col">
+        <div className="col">
         Email
         </div>
-        <div class="col">
+        <div className="col">
         DOB
         </div>
-      </div>x
+      </div>
     );
   }
 
