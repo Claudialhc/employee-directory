@@ -1,8 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
-import SearchForm from "./components/SearchForm"; 
-import Columns from "./components/Columns";
 import UserGenerator from "./components/UserGenerator"
+
+
 
 function App() {
   return (
@@ -16,8 +15,6 @@ function App() {
         </p>
       </div>
     </div>
-    <SearchForm />
-    <Columns />
     <UserGenerator />
     </>
   );

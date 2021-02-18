@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import EmployeeDetail from "./EmployeeDetail";
+import axios from "axios";
 import API from "../API";
+import ResultList from "./ResultList";
+import Columns from "./Columns";
 
 class UserGenerator extends Component {
   state = {
-    result: {},
     search: "",
+    results: [],
   };
 
   componentDidMount() {
@@ -16,7 +19,7 @@ class UserGenerator extends Component {
   searchEmployee = () => {
       API.userGenerator()
       .then((res) => {
-          this.setState({ result: res.data })
+          this.setState({ results: res.data.results })
           console.log(res.data)
         })
       .catch((err) => console.log(err));
@@ -36,6 +39,7 @@ class UserGenerator extends Component {
       return <h3> No such employee was found.</h3>;
     }
     return (
+    // {this.state.emoloyees.map((employee) => (
       <EmployeeDetail
         img={this.state.result.Image}
         name={this.state.result.Name}
@@ -44,13 +48,22 @@ class UserGenerator extends Component {
         dob={this.state.result.DOB}
       />
     );
-  }
+    }
 
   render() {
+      console.log(this.state)
     return (
-      ""
+        <div>
+        <SearchForm
+          search={this.state.search}
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}
+        />
+        <Columns />
+        <ResultList results={this.state.results || [""]} />
+      </div>
     );
   }
-}
+} 
 
 export default UserGenerator;
