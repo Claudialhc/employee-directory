@@ -4,7 +4,7 @@ import EmployeeDetail from "./EmployeeDetail";
 import axios from "axios";
 import API from "../API";
 import ResultList from "./ResultList";
-import Columns from "./Columns";
+
 
 class UserGenerator extends Component {
   state = {
@@ -13,10 +13,10 @@ class UserGenerator extends Component {
   };
 
   componentDidMount() {
-    this.searchEmployee();
+    this.getEmployees();
   }
 
-  searchEmployee = () => {
+  getEmployees = () => {
       API.userGenerator()
       .then((res) => {
           this.setState({ results: res.data.results })
@@ -26,13 +26,10 @@ class UserGenerator extends Component {
   };
 
   handleInputChange = (event) => {
-    this.setState({ search: event.target.value });
+    const emName = this.state.results.filter(result => result.name.first.toLowerCase().startsWith(event.target.value.toLowerCase()));
+    this.setState({ search: event.target.value, results: emName });
   };
 
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    this.searchEmployee(this.state.search);
-  };
 
   renderEmployeeSearchResult() {
     if (!this.state.result.Name) {
@@ -56,10 +53,9 @@ class UserGenerator extends Component {
         <div>
         <SearchForm
           search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <Columns />
+        
         <ResultList results={this.state.results || [""]} />
       </div>
     );
